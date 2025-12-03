@@ -1,0 +1,30 @@
+import Header from "@/components/Header";
+import UserBio from "@/components/users/UserBio";
+import Userhero from "@/components/users/Userhero";
+import useUser from "@/hooks/useUser";
+import { useRouter } from "next/router";
+import { ClipLoader } from "react-spinners";
+
+
+export default function UserView() {
+  const router = useRouter();
+  const userId = router.query.userId;
+
+  const { data: fetchedUser, isLoading } = useUser(userId as string);
+
+  if (isLoading || !fetchedUser) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <ClipLoader color="lightblue" size={50} />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <Header showBackArrow label={fetchedUser?.name} />
+      <Userhero userId={userId as string} />
+      <UserBio userId={userId as string} />
+    </>
+  );
+}
