@@ -31,7 +31,7 @@ export default function RegisterModal() {
 
       toast.success('Account created successfully');
 
-      signIn('credentials', {
+      await signIn('Credentials', {
         email,
         password,
       });

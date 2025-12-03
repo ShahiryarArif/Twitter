@@ -18,7 +18,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         username,
         name,
         email,
-        password: hashedPassword,
+        hashedPassword,
+        hasNotifications: false,
       },
     });
 

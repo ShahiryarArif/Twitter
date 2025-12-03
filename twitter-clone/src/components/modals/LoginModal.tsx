@@ -17,7 +17,7 @@ export default function LoginModal() {
     try {
       setIsLoading(true);
 
-      await signIn('credentials', {
+      await signIn('Credentials', {
         email,
         password
       });
